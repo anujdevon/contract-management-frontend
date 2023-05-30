@@ -1,41 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
+import SignupPage from './SignUpPage';
+import LoginPage from './LoginPage';
 
-function App() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const HomePage = () => (
+  <div>
+    <h1>Welcome to Contract Management System</h1>
+    <p>Please sign up or login to continue</p>
+    <div>
+      <Link to="/signup">Sign Up</Link><br></br>
+      <Link to="/login">Log in</Link>
+    </div>
+  </div>
 
-  const handleSignUp = async () => {
+);
+
+
+const App = () => {
+  const baseURL = 'http://localhost:8080'; // Update with your backend URL
+
+  const handleSignup = async (user) => {
     try {
-      const response = await axios.post('http://localhost:8080/signup', { email, password });
-      console.log(response.data); // handle response as needed
+      const response = await axios.post(`${baseURL}/signup`, user);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (user) => {
     try {
-      const response = await axios.post('http://localhost:8080/login', { email, password });
-      console.log(response.data); // handle response as needed
+      const response = await axios.post(`http://localhost:8080/login`, user);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignUp}>Sign Up</button>
-
-      <h1>Login</h1>
-      <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
-    </div>
+    <Router>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/signup"
+            element={<SignupPage handleSignup={handleSignup} />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage handleLogin={handleLogin} />}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
