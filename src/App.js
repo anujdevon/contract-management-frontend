@@ -1,26 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import SignupPage from './SignUpPage';
 import LoginPage from './LoginPage';
-
-const HomePage = () => (
-  <div>
-    <h1>Welcome to Contract Management System</h1>
-    <p>Please sign up or login to continue</p>
-    <div>
-      <Link to="/signup">Sign Up</Link><br></br>
-      <Link to="/login">Log in</Link>
-    </div>
-  </div>
-
-);
-
+import HomePage from './HomePage'; // Import the new home page component
 
 const App = () => {
   const baseURL = 'http://localhost:8080'; // Update with your backend URL
 
   const handleSignup = async (user) => {
+    console.log("sign Up Function");
     try {
       const response = await axios.post(`${baseURL}/signup`, user);
       console.log(response.data);
@@ -31,7 +20,7 @@ const App = () => {
 
   const handleLogin = async (user) => {
     try {
-      const response = await axios.post(`http://localhost:8080/login`, user);
+      const response = await axios.post(`${baseURL}/login`, user);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -42,7 +31,7 @@ const App = () => {
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} /> {/* Render the new home page component */}
           <Route
             path="/signup"
             element={<SignupPage handleSignup={handleSignup} />}
