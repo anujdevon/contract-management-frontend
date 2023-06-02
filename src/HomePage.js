@@ -1,8 +1,8 @@
-
 import React from 'react';
 import './HomePage.css';
 
 const HomePage = () => (
+
     <div className="homepage-container">
         <nav className="navbar">
             <div className="logo">
@@ -35,39 +35,39 @@ const HomePage = () => (
             <div className="homepage-content">
                 <div className="homepage-image">
                     <img
-src="https://www.gdprregister.eu/wp-content/uploads/2020/11/contract-lifecycle-management.png"
-alt="Contract Lifecycle Management"
-/>
-</div>
-<div className="homepage-text">
-<h1 className="homepage-title">
-<span className="gradient-text">Contract Management</span> <br />
-<span className="gradient-text-1">System</span>
-</h1>
-<p className="homepage-description">Streamline your Contracts, Simplify your Success</p>
-</div>
-</div>
+                        src="https://www.gdprregister.eu/wp-content/uploads/2020/11/contract-lifecycle-management.png"
+                        alt="Contract Lifecycle Management"
+                    />
+                </div>
+                <div className="homepage-text">
+                    <h1 className="homepage-title">
+                        <span className="gradient-text">Contract Management</span> <br />
+                        <span className="gradient-text-1">System</span>
+                    </h1>
+                    <p className="homepage-description">Streamline your Contracts, Simplify your Success</p>
+                </div>
+            </div>
 
-<div className="sticky-header">
-<h2 className="services-heading">Our Services</h2>
-<div className="services-container">
-<div className="service-box">
-<h3 className="service-title">Service 1</h3>
-<p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-</div>
-<div className="service-box">
-<h3 className="service-title">Service 2</h3>
-<p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-</div>
-<div className="service-box">
-<h3 className="service-title">Service 3</h3>
-<p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-<br/></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+            {/* /* <div className="sticky-header">
+                <h2 className="services-heading">Our Services</h2>
+                <div className="services-container">
+                    <div className="service-box">
+                        <h3 className="service-title">Service 1</h3>
+                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div className="service-box">
+                        <h3 className="service-title">Service 2</h3>
+                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div className="service-box">
+                        <h3 className="service-title">Service 3</h3>
+                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            <br /></p>
+                    </div>
+                </div>
+            </div> */ }
+        </div>
+    </div>
 );
 
 export default HomePage;

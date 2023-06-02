@@ -13,8 +13,10 @@ const SignupPage = ({ handleSignup }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        var user = {"email":email,"password":password,"firstName":firstName,"lastName":lastName,
-                    "phoneNumber":phoneNumber,"department":department,"designation":designation};
+        var user = {
+            "email": email, "password": password, "firstName": firstName, "lastName": lastName,
+            "phoneNumber": phoneNumber, "department": department, "designation": designation
+        };
         handleSignup(user);
         setSignupSuccess(true);
     };

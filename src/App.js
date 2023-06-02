@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import SignupPage from './SignUpPage';
 import LoginPage from './LoginPage';
-import HomePage from './HomePage'; // Import the new home page component
+import HomePage from './HomePage'; 
 
 const App = () => {
-  const baseURL = 'http://localhost:8080'; // Update with your backend URL
+  const baseURL = 'http://localhost:8080'; 
 
   const handleSignup = async (user) => {
-    console.log("sign Up Function");
     try {
       const response = await axios.post(`${baseURL}/signup`, user);
       console.log(response.data);
