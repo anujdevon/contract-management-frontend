@@ -37,22 +37,7 @@
     .service-box {
     position: relative;
     padding: 10px;
-    background: linear-gradient(
-    100deg,
-    #0047ab,
-    #084eb8,
-    #1154c4,
-    #185bd1,
-    #1e62de,
-    #2a5edc,
-    #345bda,
-    #3c57d8,
-    #4547c6,
-    #4b36b4,
-    #4e24a2,
-    #4f0a8f
-    );
-    border-radius: 10px;
+    background:linear-gradient(150deg, #0047ab, #084eb8, #1154c4, #185bd1, #1e62de, #2a5edc, #345bda, #3c57d8, #4547c6, #4b36b4, #4e24a2, #4f0a8f);
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -79,6 +64,7 @@
     left: 10px;
     width: 50px;
     height: 50px;
+    
     }
     
     .service-image {
