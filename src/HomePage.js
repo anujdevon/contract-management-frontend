@@ -18,7 +18,7 @@ const HomePage = () => (
             </div>
             <ul className="nav-links">
                 <li className="nav-item">
-                    <a href="/">Services</a>
+                    <a href="/services">Services</a>
                 </li>
                 <li className="nav-item">
                     <a href="/signup">Sign Up</a>
@@ -31,7 +31,7 @@ const HomePage = () => (
                 </li>
             </ul>
         </nav>
-        <div className="scrollable-content">
+        
             <div className="homepage-content">
                 <div className="homepage-image">
                     <img
@@ -45,29 +45,11 @@ const HomePage = () => (
                         <span className="gradient-text-1">System</span>
                     </h1>
                     <p className="homepage-description">Streamline your Contracts, Simplify your Success</p>
+                    <button className='get-started-button'>Get started</button>
                 </div>
             </div>
-
-            {/* /* <div className="sticky-header">
-                <h2 className="services-heading">Our Services</h2>
-                <div className="services-container">
-                    <div className="service-box">
-                        <h3 className="service-title">Service 1</h3>
-                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <div className="service-box">
-                        <h3 className="service-title">Service 2</h3>
-                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <div className="service-box">
-                        <h3 className="service-title">Service 3</h3>
-                        <p className="service-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            <br /></p>
-                    </div>
-                </div>
-            </div> */ }
         </div>
-    </div>
+    
 );
 
 export default HomePage;

@@ -4,6 +4,7 @@ import axios from 'axios';
 import SignupPage from './SignUpPage';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage'; 
+import ServicesPage from './ServicesPage';
 
 const App = () => {
   const baseURL = 'http://localhost:8080'; 
@@ -30,7 +31,8 @@ const App = () => {
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<HomePage />} /> {/* Render the new home page component */}
+          <Route path="/" element={<HomePage />} /> {}
+          <Route path="services" element={<ServicesPage />} /> {}
           <Route
             path="/signup"
             element={<SignupPage handleSignup={handleSignup} />}
