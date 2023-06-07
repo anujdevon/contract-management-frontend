@@ -1,0 +1,54 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #63a4ff;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+    overflow-y: scroll;
+    max-height: 100vh;
+    }
+    
+    .dashboard-page {
+    background-color: #f2f2f2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    }
+    
+    
+    
+    .dashboard-container {
+    margin-top: 50px;
+    flex: 1;
+    padding: 20px;
+    }
+    
+    h2 {
+    margin-bottom: 20px;
+    }
+    
+    .upload-form {
+    margin-bottom: 20px;
+    }
+    
+    .file-list {
+    max-width: 600px;
+    }
+    
+    ul {
+    list-style-type: none;
+    padding: 0;
+    }
+    
+    li {
+    margin-bottom: 10px;
+    }
+    
+    a {
+    color: #000;
+    text-decoration: none;
+    }
+    
+    a:hover {
+    text-decoration: underline;
+    }

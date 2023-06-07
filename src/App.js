@@ -5,6 +5,7 @@ import SignupPage from './SignUpPage';
 import LoginPage from './LoginPage';
 import HomePage from './HomePage'; 
 import ServicesPage from './ServicesPage';
+import Dashboard from './Dashboard';
 
 const App = () => {
   const baseURL = 'http://localhost:8080'; 
@@ -32,6 +33,7 @@ const App = () => {
       <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} /> {}
+          <Route path="dashboard" element={<Dashboard />} /> {}
           <Route path="services" element={<ServicesPage />} /> {}
           <Route
             path="/signup"
