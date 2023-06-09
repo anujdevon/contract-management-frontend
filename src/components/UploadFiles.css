@@ -1,0 +1,121 @@
+.upload-files-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .progress {
+    margin-bottom: 10px;
+    }
+    
+    .progress-bar {
+    height: 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 5px;
+    }
+    
+    .file-input-label {
+    display: block;
+    margin-bottom: 10px;
+    }
+    
+    .upload-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    
+    .upload-message {
+    margin-top: 10px;
+    font-size: 14px;
+    }
+    
+    .file-list-container {
+    margin-top: 20px;
+    }
+    
+    .file-list-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    }
+    
+    .file-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    }
+    
+    .file-list-item {
+    margin-bottom: 5px;
+    }
+    
+    .file-list-item a {
+    color: #007bff;
+    text-decoration: none;
+    }
+    
+
+    
+    .dashboard-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #63a4ff;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+    padding-top: 70px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    }
+    
+    .dashboard-container {
+    margin-top: 20px;
+    max-width: 600px;
+    }
+    
+    h1 {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+    
+    .upload-section {
+    margin-top: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slide-in 0.5s ease-in-out;
+    }
+    
+    h3,
+    h4 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+    }
+    
+    @keyframes slide-in {
+    0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    }
+    
+    100% {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    }
+    
