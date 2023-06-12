@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import './LoginPage.css';
 
 const LoginPage = ({ handleLogin }) => {
     const [emailOrPhoneNumber, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginSuccess, setLoginSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         handleLogin({ emailOrPhoneNumber, password });
         setLoginSuccess(true);
+        navigate('/dashboard');
     };
 
     return (

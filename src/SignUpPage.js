@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignupPage.css';
 
 const SignupPage = ({ handleSignup }) => {
@@ -10,6 +11,7 @@ const SignupPage = ({ handleSignup }) => {
     const [department, setDepartment] = useState('');
     const [designation, setDesignation] = useState('');
     const [signupSuccess, setSignupSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,6 +21,8 @@ const SignupPage = ({ handleSignup }) => {
         };
         handleSignup(user);
         setSignupSuccess(true);
+        navigate('/dashboard');
+
     };
 
     return (
@@ -96,13 +100,18 @@ const SignupPage = ({ handleSignup }) => {
                                 value={department}
                                 onChange={(e) => setDepartment(e.target.value)}
                             />
-                            <input
+                            <select
                                 type="text"
                                 className="form-control"
                                 placeholder="Designation"
                                 value={designation}
-                                onChange={(e) => setDesignation(e.target.value)}
-                            />
+                                onChange={(e) => setDesignation(e.target.value)}>
+                                <option value="">Designation</option>
+                                <option value="Assistant Manager">Assistant Manager</option>
+                                <option value="Deputy Manager">Deputy Manager</option>
+                                <option value="Cheif Manager">Cheif Manager</option>
+                                <option value="Supervisor">Supervisor</option>
+                                </select>
                         </div>
                         <div className="form-group">
                             <input
