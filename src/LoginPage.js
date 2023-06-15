@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import './LoginPage.css';
 
-const LoginPage = ({ handleLogin }) => {
+const LoginPage = ({ handleLogin, setFirstName }) => {
     const [emailOrPhoneNumber, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginSuccess, setLoginSuccess] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        handleLogin({ emailOrPhoneNumber, password });
+        const firstName = await handleLogin({ emailOrPhoneNumber, password });
+        if (firstName) {
         setLoginSuccess(true);
+        setFirstName(firstName);
         navigate('/dashboard');
-    };
+        } else {
+        setLoginSuccess(false);
+        }
+        };
 
     return (
         <div className="login-page">

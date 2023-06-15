@@ -1,23 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
-const Dashboard = () => {
-    const [firstName, setFirstName] = useState('');
-    
-    // Dummy handleSignup and handleLogin functions for demonstration
-    const handleSignup = (user) => {
-    // Handle signup logic here
-    setFirstName(user.firstName);
-    };
-    
-    const handleLogin = (credentials) => {
-    // Handle login logic here
-    // Assuming successful login, retrieve the user's first name
-    
-    const user = { firstName: 'John' }; // Replace with actual user retrieval logic
-    setFirstName(user.firstName);
-    };
+const Dashboard = ({ firstName }) => {
+
 
     return (
         <div className="dashboard-page">
@@ -50,8 +36,8 @@ const Dashboard = () => {
             </nav>
             <div className="dashboard">
                 <br />
-                {firstName && <span className="welcome-message">Welcome, {firstName}</span>}
-                <br /><h1>Welcome to the Dashboard!</h1>
+                
+                <br /><h1>Welcome, {firstName}!!!</h1>
                 <div className="upload-section">
 
                     <h4>Upload Files:</h4>
