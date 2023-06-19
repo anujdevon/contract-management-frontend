@@ -10,20 +10,20 @@ const SignupPage = ({ handleSignup }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [department, setDepartment] = useState('');
     const [designation, setDesignation] = useState('');
-    const [signupSuccess, setSignupSuccess] = useState(false);
+    // const [signupSuccess, setSignupSuccess] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         var user = {
-            "email": email, "password": password, "firstName": firstName, "lastName": lastName,
-            "phoneNumber": phoneNumber, "department": department, "designation": designation
+        "email": email, "password": password, "firstName": firstName, "lastName": lastName,
+        "phoneNumber": phoneNumber, "department": department, "designation": designation
         };
-        handleSignup(user);
-        setSignupSuccess(true);
+        await handleSignup(user);
+        
         navigate('/dashboard');
-
-    };
+        
+        };
 
     return (
         <div className="signup-page">
@@ -58,7 +58,7 @@ const SignupPage = ({ handleSignup }) => {
                 <img className="signup-vector" src="https://tekpros.com/images/asset-management/Contract-Management/Vector-Smart-Object.png" alt="Vector" />
                 <div className="signup-box">
                     <h1 className="signup-title">Sign Up</h1>
-                    {signupSuccess && <p className="success-message">Sign Up successful! You can now log in.</p>}
+                    {/* {signupSuccess && <p className="success-message">Sign Up successful! You can now log in.</p>} */}
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <input

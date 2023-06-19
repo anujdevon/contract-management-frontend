@@ -3,20 +3,24 @@ import { useNavigate } from 'react-router';
 import './LoginPage.css';
 
 const LoginPage = ({ handleLogin, setFirstName }) => {
-    const [emailOrPhoneNumber, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loginSuccess, setLoginSuccess] = useState(false);
+    // const [loginSuccess, setLoginSuccess] = useState(false);
     const navigate = useNavigate();
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const firstName = await handleLogin({ emailOrPhoneNumber, password });
-        if (firstName) {
-        setLoginSuccess(true);
-        setFirstName(firstName);
+        const user= {email,password};
+        
+        const response = await handleLogin(user);
+        if (response && response.firstName) {
+        // setLoginSuccess(true);
+        // setFirstName(response.firstName);
         navigate('/dashboard');
-        } else {
-        setLoginSuccess(false);
+        // } else {
+        // setLoginSuccess(false);
+        // }
+    
         }
         };
 
@@ -53,14 +57,14 @@ const LoginPage = ({ handleLogin, setFirstName }) => {
                 <img className="login-vector" src="https://tekpros.com/images/asset-management/Contract-Management/Vector-Smart-Object.png" alt="Vector" />
                 <div className="login-box">
                     <h1 className="login-title">Login</h1>
-                    {loginSuccess && <p className="success-message">Login successful!</p>}
+                    {/* {loginSuccess && <p className="success-message">Login successful!</p>} */}
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <input
-                                type="etext"
+                                type="text"
                                 className="form-control"
                                 placeholder="Email"
-                                value={emailOrPhoneNumber}
+                                value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <input

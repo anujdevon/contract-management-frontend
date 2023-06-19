@@ -25,11 +25,15 @@ const handleLogin = async (user) => {
   try {
   const response = await axios.post(`${baseURL}/login`, user);
   console.log(response.data);
+  if(response && response.data.firstName){
   setFirstName(response.data.firstName);
-  } catch (error) {
-  console.error(error);
   
   }
+}
+  catch (error){
+  console.error(error);
+  }
+  
   };
 
 return (
@@ -38,17 +42,17 @@ return (
           <Routes>
             <Route path="/" element={<HomePage />} /> {}
             <Route
-          path="dashboard"
+          path="/dashboard"
           element={<Dashboard firstName={firstName} />}
         />
-            <Route path="services" element={<ServicesPage />} /> {}
+            <Route path="/services" element={<ServicesPage />} /> {}
             <Route
               path="/signup"
               element={<SignupPage handleSignup={handleSignup} />}
             />
             <Route
               path="/login"
-              element={<LoginPage handleLogin={handleLogin} setFirstName={setFirstName} />}
+              element={<LoginPage handleLogin={handleLogin}  />}
             />
           </Routes>
         </div>
