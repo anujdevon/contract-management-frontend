@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import './LoginPage.css';
 
-const LoginPage = ({ handleLogin, setFirstName }) => {
+const LoginPage = ({ handleLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [loginSuccess, setLoginSuccess] = useState(false);
@@ -12,16 +12,10 @@ const LoginPage = ({ handleLogin, setFirstName }) => {
         e.preventDefault();
         const user= {email,password};
         
-        const response = await handleLogin(user);
-        if (response && response.firstName) {
-        // setLoginSuccess(true);
-        // setFirstName(response.firstName);
+        ;
+        await handleLogin(user);
         navigate('/dashboard');
-        // } else {
-        // setLoginSuccess(false);
-        // }
-    
-        }
+        
         };
 
     return (
@@ -84,26 +78,3 @@ const LoginPage = ({ handleLogin, setFirstName }) => {
 };
 
 export default LoginPage;
-// type="text"
-// className="form-control"
-// placeholder="Email"
-// value={emailOrPhoneNumber}
-// onChange={(e) => setEmail(e.target.value)}
-// />
-// <input
-// type="password"
-// className="form-control"
-// placeholder="Password"
-// value={password}
-// onChange={(e) => setPassword(e.target.value)}
-// />
-// </div>
-// <button type="submit" className="btn btn-primary">Log in</button>
-// </form>
-// </div>
-// </div>
-// </div>
-// );
-// };
-
-// export default LoginPage;

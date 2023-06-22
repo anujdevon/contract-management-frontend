@@ -14,6 +14,7 @@ currentFile: undefined,
 progress: 0,
 message: "",
 fileInfos: [],
+userId:0
 };
 }
 
@@ -39,7 +40,7 @@ progress: 0,
 currentFile: currentFile,
 });
 
-UploadService.upload(currentFile, (event) => {
+UploadService.upload(currentFile, this.state.userId, (event) => {
 this.setState({
 progress: Math.round((100 * event.loaded) / event.total),
 });

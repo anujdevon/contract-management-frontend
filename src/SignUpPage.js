@@ -15,13 +15,14 @@ const SignupPage = ({ handleSignup }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        var user = {
+        
+        const user = {
         "email": email, "password": password, "firstName": firstName, "lastName": lastName,
         "phoneNumber": phoneNumber, "department": department, "designation": designation
         };
         await handleSignup(user);
         
-        navigate('/dashboard');
+        navigate('/login');
         
         };
 

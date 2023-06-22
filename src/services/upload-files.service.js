@@ -1,10 +1,12 @@
 import http from "../http-common";
 
 class UploadFilesService {
-    upload(file, onUploadProgress) {
+    upload(file, userId, onUploadProgress) {
         let formData = new FormData();
 
         formData.append("file", file);
+        formData.append("userId", userId);
+        
 
         return http.post("/upload", formData, {
             headers: {

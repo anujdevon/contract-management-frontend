@@ -1,10 +1,29 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
-const Dashboard = ({ firstName }) => {
+function Dashboard() {
+    const [firstName,setFirstName] = useState('');
 
-
+    useEffect(() => {
+        const fetchFirstName = async () => {
+            try{
+                const response = await fetch('api/user/firstname',{
+                    method:'GET',
+                    headers:{
+                        'Content-type':'application/json',
+                    },
+                });
+                const data = await response.json();
+                setFirstName(data.firstName);   
+            }
+            catch(error){
+                console.error('Error fetching first name:',error);
+            }
+        };
+        fetchFirstName();
+    },[]);
+    
     return (
         <div className="dashboard-page">
             <nav className="navbar">
