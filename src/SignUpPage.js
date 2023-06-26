@@ -21,6 +21,7 @@ const SignupPage = ({ handleSignup }) => {
         "phoneNumber": phoneNumber, "department": department, "designation": designation
         };
         await handleSignup(user);
+        localStorage.setItem('user',JSON.stringify(user));
         
         navigate('/login');
         

@@ -5,10 +5,10 @@ class UploadFilesService {
         let formData = new FormData();
 
         formData.append("file", file);
-        formData.append("userId", userId);
+        
         
 
-        return http.post("/upload", formData, {
+        return http.post(`/upload/${userId}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
@@ -16,8 +16,8 @@ class UploadFilesService {
         });
     }
 
-    getFiles() {
-        return http.get("/files");
+    getFiles(userId) {
+        return http.get(`/files/${userId}`);
     }
 }
 

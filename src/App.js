@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import axios from 'axios';
 import SignupPage from './SignUpPage';
 import LoginPage from './LoginPage';
@@ -10,6 +10,8 @@ import Dashboard from './Dashboard';
 const App = () => {
 const baseURL = 'http://localhost:8080';
 const [firstName, setFirstName]=useState('');
+const [loggedIn,setLoggedIn]=useState(false);
+
 
 const handleSignup = async (user) => {
 try {
@@ -20,13 +22,24 @@ console.error(error);
 }
 };
 
-const handleLogin = async (user) => {
+const handleLogin = async (user,navigate) => {
   try {
   const response = await axios.post(`${baseURL}/login`, user);
   console.log(response.data);
   if(response && response.data.firstName)
   {
+    const{password}=response.data;
+    if(password===user.password)
+    {
     setFirstName(response.data.firstName);
+    setLoggedIn(true);
+    navigate('/dashboard');
+    }
+    else{
+      console.log('Incorrect password.');
+      setLoggedIn(false);
+    }
+    
   }
 }
   catch (error){
@@ -35,6 +48,10 @@ const handleLogin = async (user) => {
   
   };
 
+
+
+
+
 return (
       <Router>
         <div className="container">
@@ -42,7 +59,7 @@ return (
             <Route path="/" element={<HomePage />} /> {}
             <Route
           path="/dashboard"
-          element={firstName ? <Dashboard firstName={firstName} />:<Navigate to = "/login" />}/>
+          element={ loggedIn ? (<Dashboard firstName={firstName} />) : (<Navigate to="/login" />)}/>
         
             <Route path="/services" element={<ServicesPage />} /> {}
             <Route

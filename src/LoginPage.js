@@ -14,6 +14,7 @@ const LoginPage = ({ handleLogin}) => {
         
         ;
         await handleLogin(user);
+        localStorage.setItem('user',JSON.stringify(user));
         navigate('/dashboard');
         
         };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UploadService from "../services/upload-files.service";
-import "./UploadFiles.css"; // Import the CSS file for custom styles
+import "./UploadFiles.css"; 
 
 export default class UploadFiles extends Component {
 constructor(props) {
@@ -14,12 +14,13 @@ currentFile: undefined,
 progress: 0,
 message: "",
 fileInfos: [],
-userId:0
+userId:props.userId
 };
 }
 
 componentDidMount() {
-UploadService.getFiles().then((response) => {
+const {userId} = this.props;
+UploadService.getFiles(userId).then((response) => {
 this.setState({
 fileInfos: response.data,
 });
@@ -33,14 +34,15 @@ selectedFiles: event.target.files,
 }
 
 upload() {
-let currentFile = this.state.selectedFiles[0];
+const {selectedFiles, userId} = this.state;
+const currentFile = selectedFiles[0];
 
 this.setState({
 progress: 0,
-currentFile: currentFile,
+currentFile,
 });
 
-UploadService.upload(currentFile, this.state.userId, (event) => {
+UploadService.upload(currentFile, userId, (event) => {
 this.setState({
 progress: Math.round((100 * event.loaded) / event.total),
 });
@@ -54,6 +56,7 @@ return UploadService.getFiles();
 .then((files) => {
 this.setState({
 fileInfos: files.data,
+selectedFiles: undefined,
 });
 })
 .catch(() => {
@@ -61,6 +64,7 @@ this.setState({
 progress: 0,
 message: "Could not upload the file!",
 currentFile: undefined,
+selectedFiles: undefined,
 });
 });
 

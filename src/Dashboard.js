@@ -2,27 +2,20 @@ import React,{useState, useEffect} from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
-function Dashboard() {
+function Dashboard({firstName: propFirstName}) {
     const [firstName,setFirstName] = useState('');
+    const [userId, setUserId] = useState('');
 
     useEffect(() => {
-        const fetchFirstName = async () => {
-            try{
-                const response = await fetch('api/user/firstname',{
-                    method:'GET',
-                    headers:{
-                        'Content-type':'application/json',
-                    },
-                });
-                const data = await response.json();
-                setFirstName(data.firstName);   
-            }
-            catch(error){
-                console.error('Error fetching first name:',error);
-            }
-        };
-        fetchFirstName();
+        const user= JSON.parse(localStorage.getItem('user'));
+        if(user)
+        {
+            setFirstName(user.firstName);
+            setUserId(user.id);
+        }
     },[]);
+
+    const displayName = propFirstName || firstName;
     
     return (
         <div className="dashboard-page">
@@ -56,11 +49,11 @@ function Dashboard() {
             <div className="dashboard">
                 <br />
                 
-                <br /><h1>Welcome, {firstName}!!!</h1>
+                <br /><h1>Welcome, {displayName}!!!</h1>
                 <div className="upload-section">
 
                     <h4>Upload Files:</h4>
-                    <UploadFiles />
+                    <UploadFiles userId={userId}/>
                 </div>
 
             </div>
