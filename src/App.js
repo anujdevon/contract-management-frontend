@@ -17,6 +17,8 @@ const handleSignup = async (user) => {
 try {
 const response = await axios.post(`${baseURL}/signup`, user);
 console.log(response.data);
+localStorage.setItem('userId',response.data.id);
+return response.data;
 } catch (error) {
 console.error(error);
 }
@@ -28,11 +30,12 @@ const handleLogin = async (user,navigate) => {
   console.log(response.data);
   if(response && response.data.firstName)
   {
-    const{password}=response.data;
+    const{password, id}=response.data;
     if(password===user.password)
     {
     setFirstName(response.data.firstName);
     setLoggedIn(true);
+    localStorage.setItem('userId',id);
     navigate('/dashboard');
     }
     else{

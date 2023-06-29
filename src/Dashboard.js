@@ -4,14 +4,14 @@ import './Dashboard.css';
 
 function Dashboard({firstName: propFirstName}) {
     const [firstName,setFirstName] = useState('');
-    const [userId, setUserId] = useState('');
+    
 
     useEffect(() => {
         const user= JSON.parse(localStorage.getItem('user'));
         if(user)
         {
             setFirstName(user.firstName);
-            setUserId(user.id);
+            
         }
     },[]);
 
@@ -53,7 +53,7 @@ function Dashboard({firstName: propFirstName}) {
                 <div className="upload-section">
 
                     <h4>Upload Files:</h4>
-                    <UploadFiles userId={userId}/>
+                    <UploadFiles />
                 </div>
 
             </div>

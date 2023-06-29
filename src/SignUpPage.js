@@ -15,17 +15,29 @@ const SignupPage = ({ handleSignup }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const user = {
-        "email": email, "password": password, "firstName": firstName, "lastName": lastName,
-        "phoneNumber": phoneNumber, "department": department, "designation": designation
+            "email": email, "password": password, "firstName": firstName, "lastName": lastName,
+            "phoneNumber": phoneNumber, "department": department, "designation": designation
         };
-        await handleSignup(user);
-        localStorage.setItem('user',JSON.stringify(user));
-        
-        navigate('/login');
-        
-        };
+        try {
+            const response = await handleSignup(user);
+            if(response && response.id){
+                const {id} = response;
+                const userData = { ...user, id };
+
+                localStorage.setItem('user', JSON.stringify(userData));
+
+                navigate('/login');
+            }
+            else{
+                console.log("error occurred during signup");
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className="signup-page">
@@ -113,7 +125,7 @@ const SignupPage = ({ handleSignup }) => {
                                 <option value="Deputy Manager">Deputy Manager</option>
                                 <option value="Cheif Manager">Cheif Manager</option>
                                 <option value="Supervisor">Supervisor</option>
-                                </select>
+                            </select>
                         </div>
                         <div className="form-group">
                             <input

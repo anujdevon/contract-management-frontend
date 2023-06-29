@@ -1,23 +1,35 @@
-import http from "../http-common";
+import axios from "axios";
+
+const API_URL = 'http://localhost:8080';
 
 class UploadFilesService {
-    upload(file, userId, onUploadProgress) {
+    upload(file,userId, onUploadProgress) {
+
+        
         let formData = new FormData();
-
+        // console.log('userId: ',userId);
         formData.append("file", file);
+        formData.append("userId",userId);
+        
+        
+        // console.log(fileInfos);
+        // console.log(file);
         
         
 
-        return http.post(`/upload/${userId}`, formData, {
+        return axios.post(`${API_URL}/upload/${userId}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Headers': '*',
+                
             },
             onUploadProgress,
         });
     }
 
-    getFiles(userId) {
-        return http.get(`/files/${userId}`);
+    getFiles() {
+        return axios.get(`${API_URL}/files`);
     }
 }
 
