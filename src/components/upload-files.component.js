@@ -63,7 +63,7 @@ class UploadFiles extends Component {
   }
 
   componentDidMount() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
     const {userId} = this.state;
     if(userId){
         UploadService.getFiles(userId).then((response) => {
@@ -80,6 +80,10 @@ class UploadFiles extends Component {
 
   render() {
     const { selectedFiles, progress, message, fileInfos } = this.state;
+    const {searchQuery} = this.props;
+
+    const filterFileInfos = fileInfos.filter((file) =>
+    file.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
       <div className='upload-files-container'>
@@ -117,8 +121,8 @@ class UploadFiles extends Component {
         <div className="file-list-container">
           <div className="file-list-header">List of Files:</div>
             <ul className="file-list">
-              {fileInfos &&
-                fileInfos.map((file, index) => (
+              {
+                filterFileInfos.map((file, index) => (
                   <li className="file-list-item" key={index}>
                     <a href={file.url}>{file.name}</a>
                   </li>

@@ -4,6 +4,7 @@ import './Dashboard.css';
 
 function Dashboard({firstName: propFirstName}) {
     const [firstName,setFirstName] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     
 
     useEffect(() => {
@@ -50,10 +51,14 @@ function Dashboard({firstName: propFirstName}) {
                 <br />
                 
                 <br /><h1>Welcome, {displayName}!!!</h1>
+                <input type="text" className='search-input'
+                placeholder='Search' value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                />
                 <div className="upload-section">
 
                     <h4>Upload Files:</h4>
-                    <UploadFiles />
+                    <UploadFiles searchQuery={searchQuery}/>
                 </div>
 
             </div>
