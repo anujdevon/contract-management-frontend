@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import axios from 'axios';
 import SignupPage from './SignUpPage';
@@ -12,6 +12,13 @@ const baseURL = 'http://localhost:8080';
 const [firstName, setFirstName]=useState('');
 const [loggedIn,setLoggedIn]=useState(false);
 
+useEffect(() => {
+  const userId = localStorage.getItem('userId');
+  if(userId)
+  {
+    setLoggedIn(true);
+  }
+},[]);
 
 const handleSignup = async (user) => {
 try {
@@ -52,7 +59,10 @@ const handleLogin = async (user,navigate) => {
   };
 
 
-
+const handleLogout = () => {
+  setLoggedIn(false);
+  localStorage.removeItem('userId');
+};
 
 
 return (
@@ -62,7 +72,7 @@ return (
             <Route path="/" element={<HomePage />} /> {}
             <Route
           path="/dashboard"
-          element={ loggedIn ? (<Dashboard firstName={firstName} />) : (<Navigate to="/login" />)}/>
+          element={ loggedIn ? (<Dashboard firstName={firstName} handleLogout={handleLogout} />) : (<Navigate to="/login" />)}/>
         
             <Route path="/services" element={<ServicesPage />} /> {}
             <Route

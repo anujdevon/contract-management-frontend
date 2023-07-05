@@ -41,7 +41,12 @@ class UploadFiles extends Component {
       });
     })
       .then((response) => {
-        if(response.data.updated){
+        const {fileInfos} = this.state;
+        const existingFile = fileInfos.find(
+          (file) => file.name === currentFile.name
+        );
+
+        if(existingFile){
           this.setState({
             message: "File updated successfully",
             selectedFiles: undefined,

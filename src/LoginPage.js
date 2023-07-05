@@ -11,11 +11,10 @@ const LoginPage = ({ handleLogin}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user= {email,password};
-        
-        ;
-        await handleLogin(user);
-        localStorage.setItem('user',JSON.stringify(user));
-        navigate('/dashboard');
+
+        await handleLogin(user,navigate);
+        setEmail('');
+        setPassword('');
         
         };
 

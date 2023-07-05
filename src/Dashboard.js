@@ -2,19 +2,25 @@ import React,{useState, useEffect} from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
-function Dashboard({firstName: propFirstName}) {
+function Dashboard({firstName: propFirstName,handleLogout}) {
     const [firstName,setFirstName] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     
 
     useEffect(() => {
-        const user= JSON.parse(localStorage.getItem('user'));
-        if(user)
+        const userId = localStorage.getItem('userId');
+        const storedFirstName= sessionStorage.getItem('firstName');
+        if(userId && storedFirstName)
         {
-            setFirstName(user.firstName);
+            setFirstName(storedFirstName);
             
         }
     },[]);
+
+    useEffect(() => {
+        sessionStorage.setItem('firstName',propFirstName);
+        setFirstName(propFirstName);
+    },[propFirstName]);
 
     const displayName = propFirstName || firstName;
     
@@ -44,6 +50,9 @@ function Dashboard({firstName: propFirstName}) {
                     </li>
                     <li className="nav-item">
                         <a href="/Contact">Contact Us</a>
+                    </li>
+                    <li className='nav-item'>
+                        <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
                     </li>
                 </ul>
             </nav>
