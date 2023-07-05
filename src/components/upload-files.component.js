@@ -21,7 +21,7 @@ class UploadFiles extends Component {
   }
 
   upload() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
     const {userId} = this.state;
     if(!userId){
         console.log('user not logged in');
@@ -57,7 +57,7 @@ class UploadFiles extends Component {
           selectedFiles: undefined,
         });
       }
-        return UploadService.getFiles(user.id);
+        return UploadService.getUserFiles(userId);
       })
       .then((response) => {
         this.setState({
@@ -78,7 +78,7 @@ class UploadFiles extends Component {
     // const user = JSON.parse(localStorage.getItem('user'));
     const {userId} = this.state;
     if(userId){
-        UploadService.getFiles(userId).then((response) => {
+        UploadService.getUserFiles(userId).then((response) => {
             this.setState({
               fileInfos: response.data,
             });

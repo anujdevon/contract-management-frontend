@@ -25,8 +25,8 @@ class UploadFilesService {
         });
     }
 
-    getFiles() {
-        return axios.get(`${API_URL}/files`);
+    getUserFiles(userId) {
+        return axios.get(`${API_URL}/file/${userId}`);
     }
 }
 
