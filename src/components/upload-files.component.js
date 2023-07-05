@@ -41,10 +41,17 @@ class UploadFiles extends Component {
       });
     })
       .then((response) => {
+        if(response.data.updated){
+          this.setState({
+            message: "File updated successfully",
+            selectedFiles: undefined,
+          });
+        } else {
         this.setState({
           message: "File uploaded successfully",
           selectedFiles: undefined,
         });
+      }
         return UploadService.getFiles(user.id);
       })
       .then((response) => {

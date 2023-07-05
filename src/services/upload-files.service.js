@@ -7,21 +7,18 @@ class UploadFilesService {
 
         
         let formData = new FormData();
-        // console.log('userId: ',userId);
+   
         formData.append("file", file);
         formData.append("userId",userId);
         
         
-        // console.log(fileInfos);
-        // console.log(file);
         
         
 
         return axios.post(`${API_URL}/upload/${userId}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                // 'Access-Control-Allow-Origin': '*',
-                // 'Access-Control-Allow-Headers': '*',
+                
                 
             },
             onUploadProgress,
