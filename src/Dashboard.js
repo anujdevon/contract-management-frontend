@@ -34,10 +34,11 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                         alt="Logo"
                     />
                 </div>
-                <div className="search-box">
+                <div className="search-box-1">
                     <input type="text" className="search-input" placeholder="Search" />
                     <i className="fas fa-search search-icon"></i>
                 </div>
+                
                 <ul className="nav-links">
                     <li className="nav-item">
                         <a href="/services">Services</a>
@@ -56,10 +57,17 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                     </li>
                 </ul>
             </nav>
+            <div className='heading-container'>
+                <h1 className='heading-text'>Welcome, {displayName}!!!</h1>
+                <img className='heading-icon'
+                src='https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0'
+                alt='Heading icon'
+                />
+                </div>
             <div className="dashboard">
                 <br />
                 
-                <br /><h1>Welcome, {displayName}!!!</h1>
+                <br />
                 <input type="text" className='search-input'
                 placeholder='Search' value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

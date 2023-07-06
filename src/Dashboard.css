@@ -16,12 +16,35 @@
     
     h1 {
     color: #fff;
-    font-size: 36px;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     }
     
+    .heading-container{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        padding-right: 65px;
+    }
+
+    .heading-text{
+        font-size: 15px;
+        margin-right: 10px;
+    }
+
+    .heading-icon{
+        width: 30px;
+        height: auto;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+    }
+
+    .search-box-1{
+        margin-right: 350px;
+    }
+
     .upload-section {
     margin-top: 40px;
     background-color: #fff;
