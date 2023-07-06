@@ -55,15 +55,17 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                     <li className='nav-item'>
                         <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
                     </li>
-                </ul>
-            </nav>
-            <div className='heading-container'>
+                    <li className='nav-item'>
+                    <div className='heading-container'>
                 <h1 className='heading-text'>Welcome, {displayName}!!!</h1>
                 <img className='heading-icon'
                 src='https://th.bing.com/th/id/R.7ea4af7d8401d2b43ee841bfa2abe89d?rik=xidyUKdveUKULQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fuser-png-icon-download-icons-logos-emojis-users-2240.png&ehk=2%2bOqgdMZqFkKaBclc%2fPL9B86vLju3iBGiFmH64kXaTM%3d&risl=&pid=ImgRaw&r=0'
                 alt='Heading icon'
                 />
                 </div>
+                    </li>
+                </ul>
+            </nav>
             <div className="dashboard">
                 <br />
                 

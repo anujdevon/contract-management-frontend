@@ -3,13 +3,16 @@ import axios from "axios";
 const API_URL = 'http://localhost:8080';
 
 class UploadFilesService {
-    upload(file,userId, onUploadProgress) {
+    upload(file,userId, effectiveDate, expirationDate, onUploadProgress) {
 
         
         let formData = new FormData();
    
         formData.append("file", file);
         formData.append("userId",userId);
+        formData.append("effectiveDate", effectiveDate);
+        formData.append("expirationDate", expirationDate);
+
         
         
         
