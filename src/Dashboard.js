@@ -34,8 +34,11 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                         alt="Logo"
                     />
                 </div>
-                <div className="search-box-1">
-                    <input type="text" className="search-input" placeholder="Search" />
+                <div className="search-box">
+                <input type="text" className='search-input'
+                placeholder='Search' value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                />
                     <i className="fas fa-search search-icon"></i>
                 </div>
                 
@@ -47,13 +50,7 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                         <a href="/">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/signup">Sign Up</a>
-                    </li>
-                    <li className="nav-item">
                         <a href="/Contact">Contact Us</a>
-                    </li>
-                    <li className='nav-item'>
-                        <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
                     </li>
                     <li className='nav-item'>
                     <div className='heading-container'>
@@ -64,20 +61,26 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                 />
                 </div>
                     </li>
+                    <li className='nav-item'>
+                        <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+                    </li>
                 </ul>
             </nav>
             <div className="dashboard">
                 <br />
                 
                 <br />
-                <input type="text" className='search-input'
-                placeholder='Search' value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                />
+                <div  className='dashboard-left'>
                 <div className="upload-section">
-
-                    <h4>Upload Files:</h4>
                     <UploadFiles searchQuery={searchQuery}/>
+                </div>
+                </div>
+                <div className='dashboard-right'>
+                <div className='image-container'>
+                    <img className='image-icon' 
+                    src='https://www.technologyonecorp.co.uk/__data/assets/image/0006/146625/Contract-Management-at-a-glance.png'
+                    alt='Contract Management'></img>
+                </div>
                 </div>
 
             </div>

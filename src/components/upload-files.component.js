@@ -34,7 +34,7 @@ class UploadFiles extends Component {
       console.log("No file selected");
       return;
     }
-    
+
     const currentFile = selectedFiles[0];
 
     this.setState({
@@ -124,7 +124,64 @@ class UploadFiles extends Component {
 
     return (
       <div className="upload-files-container">
-        {selectedFiles && (
+        
+          <div className="file-table-container">
+            <table className="file-table">
+              <thead>
+                <tr>
+                  <th>Serial No</th>
+                  <th>File Name</th>
+                  <th>Effective Date</th>
+                  <th>Expiration Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody className='file-content'>
+                {filterFileInfos.map((file, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <a href={file.url} className="file-link">
+                        {file.name}
+                      </a>
+                    </td>
+                    <td>{new Date(file.effectiveDate).toLocaleDateString('en-GB')}</td>
+                    <td>{new Date(file.expirationDate).toLocaleDateString('en-GB')}</td>
+                    <td>
+                      <span
+                    className={`status ${
+                      file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'active' : 'inactive'
+                    }`}>
+                      {file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'Active' : 'Inactive'}
+                      </span>
+                      </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="upload-section">
+          <label className="file-input-label">
+            Select Contract: 
+            <div className='select-contract-box'><input type="file" onChange={(e) => this.selectFile(e)} />
+            </div>
+          </label>
+          <label className='effective-date-label'>
+            Effective Date:
+            <input type='date' value={effectiveDate} onChange={(e) => this.handleEffectiveDateChange(e)} />
+          </label>
+          <label className='expiration-date-label'>
+            Expiration Date:
+            <input type='date' value={expirationDate} onChange={(e) => this.handleExpirationDateChange(e)} />
+          </label><br></br><br></br>
+          <button
+            className="upload-button"
+            disabled={!selectedFiles}
+            onClick={() => this.upload()}
+          >
+            Upload
+          </button>
+          {selectedFiles && (
           <div className="upload-progress">
             <div
               className="progress-bar"
@@ -138,57 +195,7 @@ class UploadFiles extends Component {
             </div>
           </div>
         )}
-
-        <div className="upload-section">
-          <label className="file-input-label">
-            Choose file: <input type="file" onChange={(e) => this.selectFile(e)} />
-          </label>
-          <label>
-            Effective Date:
-            <input type='date' value={effectiveDate} onChange={(e) => this.handleEffectiveDateChange(e)} />
-          </label>
-          <label>
-            Expiration Date:
-            <input type='date' value={expirationDate} onChange={(e) => this.handleExpirationDateChange(e)} />
-          </label>
-          <button
-            className="upload-button"
-            disabled={!selectedFiles}
-            onClick={() => this.upload()}
-          >
-            Upload
-          </button>
-
           {message && <div className="upload-message">{message}</div>}
-
-          <div className="file-table-container">
-            <table className="file-table">
-              <thead>
-                <tr>
-                  <th>Serial No</th>
-                  <th>File Name</th>
-                  <th>Effective Date</th>
-                  <th>Expiration Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filterFileInfos.map((file, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <a href={file.url} className="file-link">
-                        {file.name}
-                      </a>
-                    </td>
-                    <td>{file.effectiveDate}</td>
-                    <td>{file.expirationDate}</td>
-                    <td>{file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'Active' : 'Inactive'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     );
