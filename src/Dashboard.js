@@ -2,11 +2,12 @@ import React,{useState, useEffect} from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
+import UploadService from './services/upload-files.service';
+
 function Dashboard({firstName: propFirstName,handleLogout}) {
     const [firstName,setFirstName] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     
-
     useEffect(() => {
         const userId = localStorage.getItem('userId');
         const storedFirstName= sessionStorage.getItem('firstName');
@@ -22,7 +23,26 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
         setFirstName(propFirstName);
     },[propFirstName]);
 
+
     const displayName = propFirstName || firstName;
+
+    const generateCSV = async () => {
+        try{
+            const userId = localStorage.getItem('userId');
+            const response = await UploadService.generateCSV(userId);
+            const blob = new Blob([response.data],{type:'text/csv'});
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href=url;
+            link.setAttribute('download','files.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.log(error);
+        }
+    };  
     
     return (
         <div className="dashboard-page">
@@ -81,6 +101,9 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                     src='https://www.technologyonecorp.co.uk/__data/assets/image/0006/146625/Contract-Management-at-a-glance.png'
                     alt='Contract Management'></img>
                 </div>
+                    <button className="generate-csv-button" onClick={generateCSV}>
+                        Generate CSV
+                    </button>
                 </div>
 
             </div>

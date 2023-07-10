@@ -12,12 +12,6 @@ class UploadFilesService {
         formData.append("userId",userId);
         formData.append("effectiveDate", effectiveDate);
         formData.append("expirationDate", expirationDate);
-
-        
-        
-        
-        
-
         return axios.post(`${API_URL}/upload/${userId}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -31,7 +25,13 @@ class UploadFilesService {
     getUserFiles(userId) {
         return axios.get(`${API_URL}/file/${userId}`);
     }
+
+    generateCSV(userId){
+        return axios.get(`${API_URL}/file/csv/${userId}`,{
+        responseType : 'blob',
+    });
 }
+};
 
 const uploadFilesService = new UploadFilesService();
 export default uploadFilesService;
