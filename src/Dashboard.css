@@ -14,10 +14,6 @@
         display: flex;
     }
 
-    /* .dashboard-left{
-        flex: 1;
-        margin-left: 400px;
-    } */
 
     .dashboard-right{
         flex: 1;
@@ -71,9 +67,9 @@
     }
 
     .upload-section {
-    margin-top: 10px;
+    
     margin-right: 60px;
-    margin-left: 200px;
+    margin-left: 220px;
     background-color: #fff;
     padding: 10px;
     text-align: center;

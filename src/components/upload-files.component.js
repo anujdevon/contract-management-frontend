@@ -169,7 +169,7 @@ class UploadFiles extends Component {
           <label className='effective-date-label'>
             Effective Date:
             <input type='date' value={effectiveDate} onChange={(e) => this.handleEffectiveDateChange(e)} />
-          </label>
+          </label><br></br>
           <label className='expiration-date-label'>
             Expiration Date:
             <input type='date' value={expirationDate} onChange={(e) => this.handleExpirationDateChange(e)} />

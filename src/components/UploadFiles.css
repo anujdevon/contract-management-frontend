@@ -1,54 +1,54 @@
 .upload-files-container {
     margin: 5px;
     padding: 5px;
-    background-color: #fff;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
     
-  }
-
-  
-  .upload-progress {
+    .upload-progress {
     margin-bottom: 10px;
-  }
-  
-  .progress-bar {
+    }
+    
+    .progress-bar {
     height: 20px;
     background-color: #28a745;
     color: #fff;
     text-align: center;
     line-height: 20px;
     border-radius: 5px;
-  }
-  
-  .file-input-label {
-    /* display: block; */
+    }
+    
+    .file-input-label {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 16px;
     color: #333;
-
-  }
-  .effective-date-label,
-  .expiration-date-label{
+    }
+    
+    .effective-date-label,
+    .expiration-date-label {
     margin-bottom: 5px;
-  }
-
-  .select-contract-box{
+    }
+    
+    .select-contract-box {
     background-color: #f8f9fa;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 10px;
     font-weight: bold;
     font-size: 16px;
     color: #333;
-    transition: background-color 0.3 ease;
-  }
-
-  .select-contract-box:hover{
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    }
+    
+    .select-contract-box:hover {
     background-color: #e9ecef;
-  }
-  
-  .upload-button {
+    }
+    
+    .upload-button {
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -56,95 +56,113 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3 ease;
-  }
-
-  .upload-button:hover{
+    transition: background-color 0.3s ease;
+    }
+    
+    .upload-button:hover {
     background-color: #218838;
-  }
-  
-  .upload-message {
+    }
+    
+    .upload-message {
     margin-top: 10px;
     font-size: 14px;
     color: #3c47da;
     font-weight: bold;
-  }
-  
-  .file-table-container {
-    margin-top: 20px;
-     max-height: 300px;
-    overflow-y: scroll;
-    position: relative;
-    padding-right: 16px;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-  }
-  
-  .file-table-container::-webkit-scrollbar{
-    display: none;
-   
+    }
 
-  }
-  .file-table-header {
+    .upload-section label {
+        font-weight: bold;
+        font-size:14px;
+        color: #333;
+        margin-bottom: 5px;
+        }
+        
+        .upload-section input[type='file'] {
+        margin-left: 10px;
+        }
+        
+        .upload-section input[type='date'] {
+        padding: 2px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+        }
+    
+    .file-table-container {
+    margin-top: 20px;
+    max-height: 270px;
+    overflow-y: auto;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: #bbb transparent;
+    }
+    
+    .file-table-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+    }
+    
+    
+    .file-table-header {
     font-weight: bold;
     margin-bottom: 10px;
     position: sticky;
     top: 0;
     background-color: #f8f9fa;
     z-index: 1;
-  }
-  
-  .file-table {
+    }
+    
+    .file-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .file-table th,
-  .file-table td {
+    }
+    
+    .file-table th,
+    .file-table td {
     padding: 10px;
     text-align: left;
-  }
-  
-  .file-table th {
+    }
+    
+    .file-table th {
     background-color: #f8f9fa;
     font-weight: bold;
     color: #212529;
     border-bottom: 1px solid #dee2e6;
-  }
-  
-  .file-table td {
+    }
+    
+    .file-table td {
     width: 25%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-  
-  .file-table td:nth-child(1) {
+    }
+    
+    .file-table td:nth-child(1) {
     width: 10%;
-  }
-  
-  .file-table td:nth-child(2) {
+    }
+    
+    .file-table td:nth-child(2) {
     width: 30%;
-  }
-  
-  .file-table td:nth-child(3) {
+    }
+    
+    .file-table td:nth-child(3) {
     width: 20%;
-  }
-  
-  .file-table td:nth-child(4) {
+    }
+    
+    .file-table td:nth-child(4) {
     width: 20%;
-  }
-  
-  .file-table td:nth-child(5) {
+    }
+    
+    .file-table td:nth-child(5) {
     width: 10%;
-  }
-  
-  .file-link {
+    }
+    
+    .file-link {
     color: #007bff;
     text-decoration: none;
-  }
-  
-  .dashboard-page {
+    }
+    
+    .dashboard-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,61 +170,60 @@
     background-color: #63a4ff;
     background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
     padding-top: 70px;
-    overflow:hidden;
+    overflow: hidden;
     font-family: Arial, sans-serif;
-  }
-  
-  .dashboard-container {
+    }
+    
+    .dashboard-container {
     margin-top: 20px;
     max-width: 600px;
+    }
     
-  }
-  
-  h1 {
+    h1 {
     color: #fff;
     font-size: 36px;
     text-align: center;
     margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  
-  .upload-section {
-    margin-top: 20px;
+    }
+    
+    .upload-section {
+    margin-top: 15px;
     background-color: #fff;
     border-radius: 10px;
-    padding: 10px;
-    text-align: center;
+    padding: 20px;
+    text-align: left;
     animation: slide-in 0.5s ease-in-out;
-  }
-  
-  h3,
-  h4 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h3,
+    h4 {
     color: #333;
     font-size: 20px;
     margin-bottom: 10px;
-  }
-  
-  @keyframes slide-in {
-
-  0% {
+    }
+    
+    @keyframes slide-in {
+    0% {
     opacity: 0;
     transform: translateY(-20px);
-  }
-  
-  100% {
+    }
+    
+    100% {
     opacity: 1;
     transform: translateY(0);
-  }
-  }
-
-  .status{
+    }
+    }
+    
+    .status {
     font-weight: bold;
-  }
-
-  .status.active{
-    color:green;
-  }
-
-  .status.inactive{
+    }
+    
+    .status.active {
+    color: green;
+    }
+    
+    .status.inactive {
     color: red;
-  }
+    }
