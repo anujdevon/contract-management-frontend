@@ -11,7 +11,8 @@
     
     
     .upload-progress {
-    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
     }
     
     .progress-bar {
@@ -56,7 +57,7 @@
     color: #fff;
     border: none;
     margin-left: 10px;
-   
+    margin-top: 10px;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -70,9 +71,11 @@
     
     .upload-message {
     margin-top: 10px;
+    margin-left: 15px;
     font-size: 14px;
     color: #3c47da;
     font-weight: bold;
+    text-align: center;
     }
 
     .upload-section label {
@@ -98,6 +101,13 @@
         align-items: center;
         justify-content: space-between;
     }
+
+    .upload-files-section{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .file-table-container {
     margin-top: 20px;
     max-height: 270px;
@@ -183,10 +193,15 @@
     overflow: hidden;
     font-family: Arial, sans-serif;
     }
+
     
     .dashboard-container {
     margin-top: 20px;
     max-width: 600px;
+    }
+
+    .generate-csv-button-container{
+        margin-top: 10px;
     }
     
     h1 {
