@@ -130,7 +130,7 @@ class UploadFiles extends Component {
   }
 
   render() {
-    const { selectedFiles, progress, message, fileInfos, effectiveDate,expirationDate } = this.state;
+    const { selectedFiles, message, fileInfos, effectiveDate,expirationDate } = this.state;
     const {searchQuery} = this.props;
 
     const filterFileInfos = fileInfos.filter((file) =>
@@ -199,20 +199,6 @@ class UploadFiles extends Component {
               >
                 Upload
               </button>
-              {selectedFiles && (
-                <div className="upload-progress">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    aria-valuenow={progress}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style={{ width: `${progress}%` }}
-                  >
-                    {progress}%
-                  </div>
-                </div>
-              )}
               {message && <div className="upload-message">{message}</div>}
             </div>
           </div>
