@@ -8,24 +8,30 @@
     padding-top: 70px;
     overflow-y: scroll;
     font-family: Arial, sans-serif;
-    }
-    
-    .dashboard{
-        display: flex;
-    }
-
-
-    .dashboard-right{
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-top: 40px;
-        margin-right: 300px;
-    }
-    .dashboard-container {
-    margin-top: 20px;
-    }
+  }
+  
+  .dashboard {
+    display: flex;
+  }
+  
+  .dashboard-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  
+  .dashboard-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: 120px;
+    margin-right: 100px;
+  }
+  
     
     h1 {
     color: #fff;
@@ -67,13 +73,14 @@
     }
 
     .upload-section {
-    
-    margin-right: 60px;
-    margin-left: 220px;
-    background-color: #fff;
-    padding: 10px;
-    text-align: center;
-    animation: slide-in 0.5s ease-in-out;
+        flex: 1;
+        margin-top: 45px;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        animation: slide-in 0.5s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .image-container{
@@ -88,6 +95,26 @@
         height: auto;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
         animation: slide-in 0.5s ease-in-out;
+    }
+
+    .dashboard-button-container{
+        margin-left: 20px;
+    }
+
+    .generate-csv-button{
+        background-color: #28a720;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        float: right;
+    }
+
+    .generate-csv-button:hover{
+        background-color: #218838;
     }
     
     h3,

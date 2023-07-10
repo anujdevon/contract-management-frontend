@@ -1,48 +1,26 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import UploadFiles from './components/upload-files.component';
 import './Dashboard.css';
 
-import UploadService from './services/upload-files.service';
+function Dashboard({ firstName: propFirstName, handleLogout }) {
+  const [firstName, setFirstName] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-function Dashboard({firstName: propFirstName,handleLogout}) {
-    const [firstName,setFirstName] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
-    
-    useEffect(() => {
-        const userId = localStorage.getItem('userId');
-        const storedFirstName= sessionStorage.getItem('firstName');
-        if(userId && storedFirstName)
-        {
-            setFirstName(storedFirstName);
-            
-        }
-    },[]);
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    const storedFirstName = sessionStorage.getItem('firstName');
+    if (userId && storedFirstName) {
+      setFirstName(storedFirstName);
+    }
+  }, []);
 
-    useEffect(() => {
-        sessionStorage.setItem('firstName',propFirstName);
-        setFirstName(propFirstName);
-    },[propFirstName]);
+  useEffect(() => {
+    sessionStorage.setItem('firstName', propFirstName);
+    setFirstName(propFirstName);
+  }, [propFirstName]);
 
-
-    const displayName = propFirstName || firstName;
-
-    const generateCSV = async () => {
-        try{
-            const userId = localStorage.getItem('userId');
-            const response = await UploadService.generateCSV(userId);
-            const blob = new Blob([response.data],{type:'text/csv'});
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href=url;
-            link.setAttribute('download','files.csv');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-        } catch (error) {
-            console.log(error);
-        }
-    };  
+  const displayName = propFirstName || firstName;
+  
     
     return (
         <div className="dashboard-page">
@@ -87,25 +65,16 @@ function Dashboard({firstName: propFirstName,handleLogout}) {
                 </ul>
             </nav>
             <div className="dashboard">
-                <br />
-                
-                <br />
-                <div  className='dashboard-left'>
-                <div className="upload-section">
-                    <UploadFiles searchQuery={searchQuery}/>
-                </div>
-                </div>
-                <div className='dashboard-right'>
-                <div className='image-container'>
+        <div className="dashboard-left">
+          <div className="upload-section">
+            <UploadFiles searchQuery={searchQuery} />
+          </div>
+        </div>
+        <div className="dashboard-right">
                     <img className='image-icon' 
                     src='https://www.technologyonecorp.co.uk/__data/assets/image/0006/146625/Contract-Management-at-a-glance.png'
                     alt='Contract Management'></img>
                 </div>
-                    <button className="generate-csv-button" onClick={generateCSV}>
-                        Generate CSV
-                    </button>
-                </div>
-
             </div>
         </div>
     );

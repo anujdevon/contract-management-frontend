@@ -23,12 +23,10 @@ class UploadFiles extends Component {
   }
 
   upload() {
-    // const user = JSON.parse(localStorage.getItem('user'));
-    const {userId, selectedFiles, effectiveDate,expirationDate} = this.state;
+    const {userId, selectedFiles, effectiveDate, expirationDate} = this.state;
     if(!userId){
-        console.log('user not logged in');
-        return;
-
+      console.log('user not logged in');
+      return;
     }
     if(!selectedFiles || selectedFiles.length===0){
       console.log("No file selected");
@@ -59,21 +57,21 @@ class UploadFiles extends Component {
             selectedFiles: undefined,
           });
         } else {
-        this.setState((prevState) => ({
-          message: "File uploaded successfully",
-          selectedFiles: undefined,
-          fileInfos:[
-            ...prevState.fileInfos,
-            {
-              name:currentFile.name,
-              url:'',
-              effectiveDate:effectiveDate,
-              expirationDate:expirationDate,
-              status:'',
-            }
-          ]
-        }));
-      }
+          this.setState((prevState) => ({
+            message: "File uploaded successfully",
+            selectedFiles: undefined,
+            fileInfos:[
+              ...prevState.fileInfos,
+              {
+                name:currentFile.name,
+                url:'',
+                effectiveDate:effectiveDate,
+                expirationDate:expirationDate,
+                status:'',
+              }
+            ]
+          }));
+        }
         return UploadService.getUserFiles(userId);
       })
       .then((response) => {
@@ -92,19 +90,17 @@ class UploadFiles extends Component {
   }
 
   componentDidMount() {
-    // const user = JSON.parse(localStorage.getItem('user'));
     const {userId} = this.state;
     if(userId){
-        UploadService.getUserFiles(userId).then((response) => {
-            this.setState({
-              fileInfos: response.data,
-            });
-          })
-          .catch((error) => {
-            console.log(error);
+      UploadService.getUserFiles(userId).then((response) => {
+          this.setState({
+            fileInfos: response.data,
           });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    
   }
 
   handleEffectiveDateChange(event){
@@ -115,87 +111,116 @@ class UploadFiles extends Component {
     this.setState({ expirationDate: event.target.value});
   }
 
+  async handleClickGenerateCSV() {
+    try{
+      const userId = localStorage.getItem('userId');
+      const response = await UploadService.generateCSV(userId);
+      const blob = new Blob([response.data],{type:'text/csv'});
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href=url;
+      link.setAttribute('download','files.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+  } catch (error) {
+      console.log(error);
+  }
+  }
+
   render() {
     const { selectedFiles, progress, message, fileInfos, effectiveDate,expirationDate } = this.state;
     const {searchQuery} = this.props;
 
     const filterFileInfos = fileInfos.filter((file) =>
-    file.name.toLowerCase().includes(searchQuery.toLowerCase()));
+      file.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
-      <div className="upload-files-container">
-        
-          <div className="file-table-container">
-            <table className="file-table">
-              <thead>
-                <tr>
-                  <th>Serial No</th>
-                  <th>File Name</th>
-                  <th>Effective Date</th>
-                  <th>Expiration Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody className='file-content'>
-                {filterFileInfos.map((file, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <a href={file.url} className="file-link">
-                        {file.name}
-                      </a>
-                    </td>
-                    <td>{new Date(file.effectiveDate).toLocaleDateString('en-GB')}</td>
-                    <td>{new Date(file.expirationDate).toLocaleDateString('en-GB')}</td>
-                    <td>
-                      <span
-                    className={`status ${
-                      file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'active' : 'inactive'
-                    }`}>
-                      {file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'Active' : 'Inactive'}
-                      </span>
-                      </td>
+      <div className="upload-container">
+        <div className="upload-files-wrapper">
+          <div className="upload-files-section">
+            <div className="file-table-container">
+              <table className="file-table">
+                <thead>
+                  <tr>
+                    <th>Serial No</th>
+                    <th>File Name</th>
+                    <th>Effective Date</th>
+                    <th>Expiration Date</th>
+                    <th>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="upload-section">
-          <label className="file-input-label">
-            Select Contract: 
-            <div className='select-contract-box'><input type="file" onChange={(e) => this.selectFile(e)} />
+                </thead>
+                <tbody className='file-content'>
+                  {filterFileInfos.map((file, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <a href={file.url} className="file-link">
+                          {file.name}
+                        </a>
+                      </td>
+                      <td>{new Date(file.effectiveDate).toLocaleDateString('en-GB')}</td>
+                      <td>{new Date(file.expirationDate).toLocaleDateString('en-GB')}</td>
+                      <td>
+                        <span
+                          className={`status ${
+                            file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'active' : 'inactive'
+                          }`}
+                        >
+                          {file.expirationDate && new Date(file.expirationDate) >= new Date() ? 'Active' : 'Inactive'}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </label>
-          <label className='effective-date-label'>
-            Effective Date:
-            <input type='date' value={effectiveDate} onChange={(e) => this.handleEffectiveDateChange(e)} />
-          </label><br></br>
-          <label className='expiration-date-label'>
-            Expiration Date:
-            <input type='date' value={expirationDate} onChange={(e) => this.handleExpirationDateChange(e)} />
-          </label><br></br><br></br>
-          <button
-            className="upload-button"
-            disabled={!selectedFiles}
-            onClick={() => this.upload()}
-          >
-            Upload
-          </button>
-          {selectedFiles && (
-          <div className="upload-progress">
-            <div
-              className="progress-bar"
-              role="progressbar"
-              aria-valuenow={progress}
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style={{ width: `${progress}%` }}
-            >
-              {progress}%
+            <div className="upload-section">
+              <label className="file-input-label">
+                Select Contract: 
+                <div className='select-contract-box'>
+                  <input type="file" onChange={(e) => this.selectFile(e)} />
+                </div>
+              </label>
+              <label className='effective-date-label'>
+                Effective Date:
+                <input type='date' value={effectiveDate} onChange={(e) => this.handleEffectiveDateChange(e)} />
+              </label><br></br>
+              <label className='expiration-date-label'>
+                Expiration Date:
+                <input type='date' value={expirationDate} onChange={(e) => this.handleExpirationDateChange(e)} />
+              </label><br></br><br></br>
+              <button
+                className="upload-button"
+                disabled={!selectedFiles}
+                onClick={() => this.upload()}
+              >
+                Upload
+              </button>
+              {selectedFiles && (
+                <div className="upload-progress">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    aria-valuenow={progress}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    style={{ width: `${progress}%` }}
+                  >
+                    {progress}%
+                  </div>
+                </div>
+              )}
+              {message && <div className="upload-message">{message}</div>}
             </div>
           </div>
-        )}
-          {message && <div className="upload-message">{message}</div>}
+          <div className="generate-csv-button-container">
+            <button className="generate-csv-button" onClick={this.handleClickGenerateCSV}>
+              Generate Report
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -203,4 +228,3 @@ class UploadFiles extends Component {
 }
 
 export default UploadFiles;
-
