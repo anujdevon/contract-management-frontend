@@ -145,8 +145,8 @@ class UploadFiles extends Component {
               <table className="file-table">
                 <thead>
                   <tr>
-                    <th>Serial No</th>
-                    <th>File Name</th>
+                    <th>Sr. No</th>
+                    <th>Contract Name</th>
                     <th>Effective Date</th>
                     <th>Expiration Date</th>
                     <th>Status</th>

@@ -10,7 +10,6 @@ const SignupPage = ({ handleSignup }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [department, setDepartment] = useState('');
     const [designation, setDesignation] = useState('');
-    // const [signupSuccess, setSignupSuccess] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -55,7 +54,7 @@ const SignupPage = ({ handleSignup }) => {
                 </div>
                 <ul className="nav-links">
                     <li className="nav-item">
-                        <a href="/">Services</a>
+                        <a href="/services">Services</a>
                     </li>
                     <li className="nav-item">
                         <a href="/">Home</a>
@@ -63,16 +62,12 @@ const SignupPage = ({ handleSignup }) => {
                     <li className="nav-item">
                         <a href="/login">Sign In</a>
                     </li>
-                    <li className="nav-item">
-                        <a href="SignUpPage.js">Contact Us</a>
-                    </li>
                 </ul>
             </nav>
             <div className="signup-container">
                 <img className="signup-vector" src="https://tekpros.com/images/asset-management/Contract-Management/Vector-Smart-Object.png" alt="Vector" />
                 <div className="signup-box">
                     <h1 className="signup-title">Sign Up</h1>
-                    {/* {signupSuccess && <p className="success-message">Sign Up successful! You can now log in.</p>} */}
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <input

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import repoImage from './assets/repo.png';
 import workImage from './assets/work.png';
 import docImage from './assets/doc.png'
@@ -24,18 +23,16 @@ return (
                 <i className="fas fa-search search-icon"></i>
             </div>
             <ul className="nav-links">
-                <li className="nav-item">
-                    <Link to ="/">Home</Link>
-                </li>
+            <li className="nav-item">
+                        <a href="/">Home</a>
+                    </li>
                 <li className="nav-item">
                     <a href="/signup">Sign Up</a>
                 </li>
                 <li className="nav-item">
                     <a href="/login">Sign In</a>
                 </li>
-                <li className="nav-item">
-                    <a href="SignUpPage.js">Contact Us</a>
-                </li>
+                
             </ul>
         </nav>
         <div className="services-content">

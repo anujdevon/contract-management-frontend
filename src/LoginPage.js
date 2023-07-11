@@ -5,7 +5,6 @@ import './LoginPage.css';
 const LoginPage = ({ handleLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [loginSuccess, setLoginSuccess] = useState(false);
     const navigate = useNavigate();
     
     const handleSubmit = async (e) => {
@@ -34,16 +33,13 @@ const LoginPage = ({ handleLogin}) => {
                 </div>
                 <ul className="nav-links">
                     <li className="nav-item">
-                        <a href="/">Services</a>
+                        <a href="/services">Services</a>
                     </li>
                     <li className="nav-item">
                         <a href="/">Home</a>
                     </li>
                     <li className="nav-item">
                         <a href="/signup">Sign Up</a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="/Contact">Contact Us</a>
                     </li>
                 </ul>
             </nav>

@@ -26,9 +26,6 @@ const HomePage = () => (
                 <li className="nav-item">
                     <a href="/login">Sign In</a>
                 </li>
-                <li className="nav-item">
-                    <a href="SignUpPage.js">Contact Us</a>
-                </li>
             </ul>
         </nav>
         
@@ -45,7 +42,7 @@ const HomePage = () => (
                         <span className="gradient-text-1">System</span>
                     </h1>
                     <p className="homepage-description">Streamline your Contracts, Simplify your Success</p>
-                    <button className='get-started-button'>Get started</button>
+                    <button className='get-started-button' href='/services'>Get started</button>
                 </div>
             </div>
         </div>
