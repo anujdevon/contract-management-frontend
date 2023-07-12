@@ -75,7 +75,7 @@ const SignupPage = ({ handleSignup }) => {
                                 className="form-control"
                                 placeholder="First Name"
                                 value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                onChange={(e) => setFirstName(e.target.value)} required
                             />
                             <input
                                 type="text"
@@ -91,14 +91,14 @@ const SignupPage = ({ handleSignup }) => {
                                 className="form-control"
                                 placeholder="Email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)} required
                             />
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Phone Number"
                                 value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                onChange={(e) => setPhoneNumber(e.target.value)} required
                             />
                         </div>
                         <div className="form-group">
@@ -107,14 +107,14 @@ const SignupPage = ({ handleSignup }) => {
                                 className="form-control"
                                 placeholder="Department"
                                 value={department}
-                                onChange={(e) => setDepartment(e.target.value)}
+                                onChange={(e) => setDepartment(e.target.value)} required
                             />
                             <select
                                 type="text"
                                 className="form-control"
                                 placeholder="Designation"
                                 value={designation}
-                                onChange={(e) => setDesignation(e.target.value)}>
+                                onChange={(e) => setDesignation(e.target.value)} required>
                                 <option value="">Designation</option>
                                 <option value="Assistant Manager">Assistant Manager</option>
                                 <option value="Deputy Manager">Deputy Manager</option>
@@ -128,7 +128,7 @@ const SignupPage = ({ handleSignup }) => {
                                 className="form-control"
                                 placeholder="Password"
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)} required
                             />
                         </div>
                         <button type="submit" className="btn btn-primary">Sign up</button>

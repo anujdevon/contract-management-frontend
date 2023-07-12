@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HomePage.css';
 
 const HomePage = () => (
@@ -42,7 +43,7 @@ const HomePage = () => (
                         <span className="gradient-text-1">System</span>
                     </h1>
                     <p className="homepage-description">Streamline your Contracts, Simplify your Success</p>
-                    <button className='get-started-button' href='/services'>Get started</button>
+                    <Link to="/services"><button className='get-started-button' href='/services'>Get started</button></Link>
                 </div>
             </div>
         </div>
